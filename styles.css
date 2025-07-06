@@ -12,7 +12,7 @@
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
     --border-color: #444444;
-    --accent-color: #0066cc;
+    --accent-color: #d87853;
 }
 
 [data-theme="light"] {
@@ -22,7 +22,7 @@
     --text-primary: #000000;
     --text-secondary: #333333;
     --border-color: #dddddd;
-    --accent-color: #0066cc;
+    --accent-color: #d87853;
 }
 
 body {
@@ -47,6 +47,12 @@ body {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    margin-left: -280px;
 }
 
 .sidebar-header {
@@ -160,6 +166,24 @@ body {
     padding: 20px;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--bg-hover);
 }
 
 .chat-header h2 {
@@ -382,6 +406,235 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
+}
+
+/* Confirmation Overlay */
+.confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.confirmation-overlay.show {
+    display: flex;
+}
+
+.confirmation-modal {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90vw;
+}
+
+.confirmation-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confirmation-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-confirmation {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.close-confirmation:hover {
+    color: var(--text-secondary);
+}
+
+.confirmation-content {
+    padding: 20px;
+}
+
+.confirmation-content p {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.confirmation-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.cancel-btn, .confirm-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.cancel-btn:hover {
+    background-color: var(--bg-hover);
+}
+
+.confirm-btn {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.confirm-btn:hover {
+    background-color: #c82333;
+}
+
+.danger-btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.danger-btn:hover {
+    background-color: #c82333;
+}
+
+.chat-item {
+    padding: 12px 16px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.chat-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.chat-item:hover .chat-delete {
+    opacity: 1;
+}
+
+.chat-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.chat-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-delete {
+    opacity: 0;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    font-size: 16px;
+    transition: opacity 0.2s, color 0.2s;
+    margin-left: 8px;
+}
+
+.chat-delete:hover {
+    color: #dc3545;
+}
+
+.chat-item.active .chat-delete {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chat-item.active .chat-delete:hover {
+    color: white;
+}
+
+.chat-section {
+    margin-bottom: 16px;
+}
+
+.chat-section-title {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Centered input for empty chats */
+.main-chat.empty {
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+}
+
+.bot-welcome {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.bot-welcome::before {
+    content: 'E';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.centered-input-container {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive design */
