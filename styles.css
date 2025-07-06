@@ -52,7 +52,7 @@ body {
 
 .sidebar.collapsed {
     width: 0;
-    margin-left: -280px;
+    margin-left: -1px;
 }
 
 .sidebar-header {
@@ -699,21 +699,3 @@ body {
     }
 }
 
-
-/* Fix layout when sidebar is collapsed */
-.sidebar.collapsed ~ .main-chat {
-    margin-left: 0;
-}
-
-.sidebar.collapsed ~ .main-chat .chat-messages,
-.sidebar.collapsed ~ .main-chat .chat-input-container {
-    margin-left: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-/* Ensure content doesn't go off-screen when sidebar is collapsed */
-.sidebar.collapsed ~ .main-chat .message,
-.sidebar.collapsed ~ .main-chat .input-wrapper {
-    margin-left: 0;
-}
