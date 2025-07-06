@@ -1,2 +1,2 @@
 # chat
-Like the eliza bot but better
+Chat UI for Bots like ELIZA
