@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELIZA - Modern Chat Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="elizabot.js"></script>
+    <script src="elizadata.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>ELIZA Chat</h1>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <span class="plus-icon">+</span>
+                    New Chat
+                </button>
+            </div>
+            
+            <div class="chat-list" id="chatList">
+                <!-- Chat items will be dynamically added here -->
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="settings-btn" id="settingsBtn">
+                    <span class="settings-icon">⚙</span>
+                    Settings
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Chat Area -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <h2>ELIZA Conversation</h2>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be dynamically added here -->
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <select class="chatbot-select" id="chatbotSelect">
+                        <option value="eliza">ELIZA</option>
+                    </select>
+                    <input type="text" 
+                           class="message-input" 
+                           id="messageInput" 
+                           placeholder="Type your message here..." 
+                           autocomplete="off">
+                    <button class="send-btn" id="sendBtn">
+                        <span class="send-icon">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Overlay -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <div class="settings-header">
+                <h3>Settings</h3>
+                <button class="close-settings" id="closeSettings">×</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <label for="themeSelect">Theme:</label>
+                    <select id="themeSelect">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="chat.js"></script>
+</body>
+</html>
