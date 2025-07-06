@@ -1,2 +1,2 @@
-# eliza-improved
+# chat
 Like the eliza bot but better
