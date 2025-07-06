@@ -258,11 +258,11 @@ class ChatManager {
         this.mainChat.classList.add('empty');
         this.chatInputContainer.style.display = 'none';
         this.chatMessages.innerHTML = '';
-        
+    
         const emptyContainer = document.createElement('div');
         emptyContainer.className = 'empty-chat-container';
-        
-        // Bot welcome message
+    
+        // Bot welcome message - positioned above the input
         const botMessage = chat.messages.find(m => m.type === 'bot');
         if (botMessage) {
             const welcomeDiv = document.createElement('div');
@@ -270,11 +270,11 @@ class ChatManager {
             welcomeDiv.textContent = botMessage.content;
             emptyContainer.appendChild(welcomeDiv);
         }
-        
+    
         // Centered input container
         const centeredInputContainer = document.createElement('div');
         centeredInputContainer.className = 'centered-input-container';
-        
+    
         const inputWrapper = document.createElement('div');
         inputWrapper.className = 'input-wrapper';
         inputWrapper.innerHTML = `
